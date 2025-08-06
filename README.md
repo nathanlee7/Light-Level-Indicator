@@ -4,13 +4,13 @@ This Arduino project uses a **photoresistor (LDR)** to detect ambient light and 
 
 ![Circuit Photo](circuit_photo.jpg)
 
-## 🌞 Project Behavior
+## Project Behavior
 
 - Bright light → more LEDs light up
 - Dim light → fewer LEDs light up
 - Uses a shift register to control LEDs with fewer Arduino pins
 
-## 🧰 Components Used
+## Components Used
 
 - Arduino Uno (or compatible)
 - LDR (photoresistor)
@@ -20,13 +20,13 @@ This Arduino project uses a **photoresistor (LDR)** to detect ambient light and 
 - 8x 220Ω Resistors (for LEDs)
 - Breadboard + Jumper wires
 
-## 🔌 Circuit Connections
+## Circuit Connections
 
-### 📷 LDR (Voltage Divider):
+### LDR (Voltage Divider):
 - One leg of LDR → **5V**
 - Other leg → **Analog pin A0 (lightPin = 0)** and to **GND** through a **10kΩ resistor**
 
-### 🔁 74HC595 Shift Register:
+### 74HC595 Shift Register:
 - **Pin 11** (latchPin) → Arduino **D11**
 - **Pin 12** (clockPin) → Arduino **D12**
 - **Pin 14** (dataPin) → Arduino **D9**
@@ -37,17 +37,10 @@ This Arduino project uses a **photoresistor (LDR)** to detect ambient light and 
 
 Connect the 8 output pins (Q0–Q7) of the shift register to the **LEDs** with 220Ω resistors to GND.
 
-## 🧠 How It Works
+## How It Works
 
 1. The LDR’s analog reading (0–1023) is divided by 57 to calculate how many LEDs (0–8) to light.
 2. A loop sets the corresponding number of bits in an 8-bit value (`leds`).
 3. `shiftOut()` sends this value to the shift register to update the LEDs.
-
-## 🚀 How to Use
-
-1. Wire the LDR and shift register as described.
-2. Upload `LightLevelIndicator.ino` to your Arduino.
-3. Open the Serial Monitor (optional) and shine a light on the LDR.
-4. Watch the LEDs light up in response to brightness.
 
 ---
